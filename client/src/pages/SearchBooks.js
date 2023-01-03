@@ -84,10 +84,10 @@ const SearchBooks = () => {
     }
 
     try {
-      // Old 
+      // Old API endpoint
       // const response = await saveBook(bookToSave, token);
 
-      // New
+      // New mutation
        await saveBook_mutation({variables: {
         bookInput: {...bookToSave}
        }});
