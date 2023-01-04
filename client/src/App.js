@@ -22,7 +22,7 @@ const gqlLink = createHttpLink({
 const tokenContext = setContext((_, { headers }) => {
   // Use localstorage if it's available
   const token = localStorage.getItem("id_token");
-  const tokenContent = token ? `Bearer ${token}` : "";
+  const tokenContent = token ? `Bearer ${token}` : ``;
 
   // Return modified headers
   return {
