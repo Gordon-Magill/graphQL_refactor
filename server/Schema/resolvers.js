@@ -37,6 +37,7 @@ const resolvers = {
       }
     },
     addUser: async (parent, args, context, info) => {
+      console.log('addUser mutation resolver activated on server')
       // Args should be defined in typeDefs - in this case can just dump the whole args in since it's named correctly on the other end
       const user = await User.create(args);
       // Create a new login token for the created user
@@ -44,7 +45,7 @@ const resolvers = {
       const newToken = signToken(user);
 
       // Return the equivalent of an Auth object
-      return { token, user };
+      return { newToken, user };
     },
     saveBook: async (parent, args, context, info) => {
       console.log("saveBook this:", this);

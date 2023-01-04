@@ -11,7 +11,7 @@ import Auth from "../utils/auth";
 
 const SignupForm = () => {
   // Adding new mutation
-  const [addUser, {error}] = useMutation(ADD_USER)
+  const [addUser, { error }] = useMutation(ADD_USER)
 
   // set initial form state
   const [userFormData, setUserFormData] = useState({
@@ -47,6 +47,7 @@ const SignupForm = () => {
       // }
       // const { token, user } = await response.json();
 
+      console.log(userFormData)
       const { userInfo } = await addUser({variables:{
         ...userFormData
       }})
