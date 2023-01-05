@@ -19,7 +19,12 @@ import {REMOVE_BOOK} from '../utils/MUTATIONS'
 const SavedBooks = () => {
 
   // Set up Apollo mutations and queries
-  const {loading, userData} = useQuery(ME_QUERY)
+  const {loading, data} = useQuery(ME_QUERY)
+  console.log('raw me query value returned to SavedBooks.js:', data)
+
+  // Create a contingency object in case the data pull fails or you have no books
+  const myData = data?.me || {savedBooks: []}
+  
   const [removeBook, { error }] = useMutation(REMOVE_BOOK)
 
   // Old REST API logic
@@ -82,6 +87,9 @@ const SavedBooks = () => {
     return <h2>LOADING...</h2>;
   }
 
+  console.log(`SavedBooks about to use:`)
+  console.log(`data:`, data)
+
   return (
     <>
       <Jumbotron fluid className="text-light bg-dark">
@@ -91,14 +99,14 @@ const SavedBooks = () => {
       </Jumbotron>
       <Container>
         <h2>
-          {userData.savedBooks.length
-            ? `Viewing ${userData.savedBooks.length} saved ${
-                userData.savedBooks.length === 1 ? "book" : "books"
+          {myData.savedBooks?.length
+            ? `Viewing ${myData.savedBooks.length} saved ${
+                myData.savedBooks.length === 1 ? "book" : "books"
               }:`
             : "You have no saved books!"}
         </h2>
         <CardColumns>
-          {userData.savedBooks.map((book) => {
+          {myData.savedBooks.map((book) => {
             return (
               <Card key={book.bookId} border="dark">
                 {book.image ? (

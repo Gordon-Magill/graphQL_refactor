@@ -31,7 +31,7 @@ const resolvers = {
           console.log("Login mutation resolver error: incorrect user password");
         } else {
           // Provide a an Auth object for the valid user
-          const newToken = signToken(user);
+          const token = signToken(user);
           return { token, user };
         }
       }

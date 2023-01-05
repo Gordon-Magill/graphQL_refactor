@@ -73,6 +73,7 @@ const SearchBooks = () => {
 
   // create function to handle saving a book to our database
   const handleSaveBook = async (bookId) => {
+    console.log('handleSaveBook called with bookId: ',bookId)
     // find the book in `searchedBooks` state by the matching id
     const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
 
@@ -88,6 +89,7 @@ const SearchBooks = () => {
       // const response = await saveBook(bookToSave, token);
 
       // New mutation
+      console.log('calling saveBook_mutation with ...bookToSave: ',bookToSave)
        await saveBook_mutation({variables: {
         bookInput: {...bookToSave}
        }});
@@ -98,6 +100,7 @@ const SearchBooks = () => {
       // }
 
       // if book successfully saves to user's account, save book id to state
+      console.log('setSavedBookIds about to be called with savedBookIds: ',savedBookIds)
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
     } catch (err) {
       console.error(err);
