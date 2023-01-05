@@ -10,7 +10,7 @@ const { ApolloServer } = require("apollo-server-express");
 const { authMiddleware } = require("./utils/auth");
 
 // New definitions of graphQL queries and mutations for use with Apollo
-const { typeDefs, resolvers } = require("./Schema");
+const { typeDefs, resolvers } = require("./schemas");
 
 // Routing will be handled using React components and not separate express routes
 // const routes = require('./routes');
@@ -41,7 +41,7 @@ const server = new ApolloServer({
 // In substitution of normal routes, just have all requests go the SPA index.html
 // Make sure you've done at least one build so this file actually exists!
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  res.sendFile(path.join(__dirname, "../client/"));
 });
 
 // Apply new Apollo server around the express Server
@@ -60,4 +60,4 @@ const startApolloServer = async (typeDefs, resolvers) => {
   });
 };
 
-startApolloServer(typeDefs, resolvers)
+startApolloServer(typeDefs, resolvers);

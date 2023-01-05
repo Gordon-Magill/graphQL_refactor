@@ -1,15 +1,16 @@
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
+// require('dotenv').config();
 
 // Don't store your secrets in some garbage js! Use environment variables!
-// const secret = 'mysecretsshhhhh';
-const secret = process.env.project_secret
+const secret = 'mysecretsshhhhh';
+// const secret = process.env.project_secret
+// const secret = process.env.project_secret
 
 const expiration = '2h';
 
 module.exports = {
   // function for our authenticated routes
-  authMiddleware: function (req, res, next) {
+  authMiddleware: function ({req, res}){
     // allows token to be sent via  req.query or headers (NEW: or with token in the body, even if nonstand it's good to have)
     let token = req.query.token || req.headers.authorization || req.body.token;
 
@@ -19,7 +20,9 @@ module.exports = {
     }
 
     if (!token) {
-      return res.status(400).json({ message: 'You have no token!' });
+      // return res.status(400).json({ message: 'You have no token!' });
+      // return res.status(400)
+      return req
     }
 
     // verify token and get user data out of it
