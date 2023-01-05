@@ -31,6 +31,7 @@ const SignupForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    console.log(`handleFormSubmit started`)
 
     // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
@@ -48,12 +49,13 @@ const SignupForm = () => {
       // const { token, user } = await response.json();
 
       console.log(userFormData)
-      const { userInfo } = await addUser({variables:{
+      const {data} = await addUser({variables:{
         ...userFormData
       }})
+      console.log(`handleFormSubmit finished with addUser`)
       
-      console.log(userInfo);
-      Auth.login(userInfo.addUser.token);
+      console.log(data);
+      Auth.login(data.addUser.token);
 
     } catch (err) {
       console.error(err);
@@ -65,6 +67,8 @@ const SignupForm = () => {
       email: "",
       password: "",
     });
+
+    console.log(`handleFormSubmit ended`)
   };
 
   return (
