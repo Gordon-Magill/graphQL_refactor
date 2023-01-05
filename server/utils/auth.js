@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
+// require('dotenv').config();
 
 // Don't store your secrets in some garbage js! Use environment variables!
-// const secret = 'mysecretsshhhhh';
-const secret = process.env.project_secret
+const secret = 'mysecretsshhhhh';
+// const secret = process.env.project_secret
 
 
 const expiration = '2h';
