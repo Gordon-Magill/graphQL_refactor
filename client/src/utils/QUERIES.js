@@ -3,20 +3,19 @@ import { gql } from "@apollo/client";
 
 // Facilitate client-side interaction with the "me" query
 export const ME_QUERY = gql`
-    query me_query {
-        me {
-            _id
-            username
-            email
-            savedBooks {
-                bookId
-                authors
-                description
-                image
-                link
-                title
-            }
-        }
-
+  query Query {
+    me {
+      _id
+      username
+      email
+      savedBooks {
+        bookId
+        authors
+        description
+        image
+        link
+        title
+      }
     }
+  }
 `;

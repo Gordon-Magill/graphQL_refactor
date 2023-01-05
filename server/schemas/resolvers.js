@@ -7,7 +7,9 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     me: async (parent, args, context, info) => {
-      // If the authentication middleware didn't attach user info
+      console.log('me query resolver activated')
+      console.log("context:",context)
+      // If the authentication middleware didn't attach user info, send an alert
       if (context.user) {
         const user = await User.findOne({ _id: context.user._id }).select(
           "-password"

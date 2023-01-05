@@ -94,7 +94,7 @@ const SearchBooks = () => {
       const { data } = await saveBook_mutation({variables: {
         bookInfo: {...bookToSave}
        }});
-       console.log(data)
+       console.log('data:', data)
       
       //  Nonfunctional now that we're not using the REST API
       // if (!response.ok) {
