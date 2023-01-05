@@ -24,11 +24,14 @@ const tokenContext = setContext((_, { headers }) => {
   const token = localStorage.getItem("id_token");
   console.log("retrieved token from localstorage:", token);
   const tokenContent = token ? `Bearer ${token}` : ``;
+  console.log('tokenContent to be added to headers:', tokenContent)
 
   // Return modified headers
   return {
-    ...headers,
-    authorization: tokenContent,
+    headers: {
+      ...headers,
+      authorization: tokenContent,
+    }
   };
 });
 
