@@ -20,10 +20,13 @@ const resolvers = {
   },
   Mutation: {
     login: async (parent, args, context, info) => {
+      console.log('login server mutation resolver triggered')
+      console.log(args)
       // Find any users that have the same email submitted in the login attempt
       const user = await User.findOne({ email: args.email });
+      console.log(`user:`, user)
       if (!user) {
-        console.log("Login mutation resolver error: incorrect user emaail");
+        console.log("Login mutation resolver error: incorrect user email");
       } else {
         // Verify that the provided password matches that of the found User
         const pwCheck = user.isCorrectPassword(args.password);
@@ -32,6 +35,7 @@ const resolvers = {
         } else {
           // Provide a an Auth object for the valid user
           const token = signToken(user);
+          console.log({token, user})
           return { token, user };
         }
       }

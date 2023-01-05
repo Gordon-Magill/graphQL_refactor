@@ -15,6 +15,7 @@ const LoginForm = () => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+
   // New mutation to replace REST endpoint
   const [login, {error}] = useMutation(LOGIN_USER)
 
@@ -43,12 +44,13 @@ const LoginForm = () => {
       // const { token, user } = await response.json();
 
       // NEW mutation content
-      const {loggedInUser } = await login({variables:{
+      console.log('userFormData:', userFormData)
+      const { data } = await login({variables:{
         ...userFormData
       }})
 
-      console.log(loggedInUser);
-      Auth.login(loggedInUser.login.token);
+      console.log(data);
+      Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
       setShowAlert(true);
