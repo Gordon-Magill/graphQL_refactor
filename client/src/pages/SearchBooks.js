@@ -60,6 +60,7 @@ const SearchBooks = () => {
         title: book.volumeInfo.title,
         description: book.volumeInfo.description,
         image: book.volumeInfo.imageLinks?.thumbnail || "",
+        link: 'www.testlink.com'
       }));
 
       setSearchedBooks(bookData);
@@ -90,9 +91,10 @@ const SearchBooks = () => {
 
       // New mutation
       console.log('calling saveBook_mutation with ...bookToSave: ',bookToSave)
-       await saveBook_mutation({variables: {
-        bookInput: {...bookToSave}
+      const { data } = await saveBook_mutation({variables: {
+        bookInfo: {...bookToSave}
        }});
+       console.log(data)
       
       //  Nonfunctional now that we're not using the REST API
       // if (!response.ok) {
