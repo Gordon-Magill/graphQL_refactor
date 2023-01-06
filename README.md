@@ -3,7 +3,7 @@
 
 ![Deployed screenshot](./assets/book_search_screenshot.png)
 
-[Deployed application link](www.google.com)
+[Deployed application link](https://arcane-garden-49293.herokuapp.com/)
 
 ## Description
 
@@ -13,7 +13,6 @@ A demo application to demonstrate refactoring content from a RESTful API to Apol
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Credits](#credits)
 - [Tests](#tests)
 - [Contributing](#contributing)
 - [Questions](#questions)
@@ -27,17 +26,13 @@ Run ```npm i``` in the directory of the cloned repo.
 
 Run ```npm run develop``` to run this in a development setting.
 
-## Credits
-
-MANUALLY LIST COLLABORATORS HERE
-
 ## Tests
 
 No tests implemented at this time.
 
 ## Contributing
 
-N/A
+Not accepting contributions at this time, but feel free to clone, fork, and modify to your pleasing.
 
 ## Questions
 
