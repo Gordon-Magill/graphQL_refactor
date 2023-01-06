@@ -76,25 +76,32 @@ const resolvers = {
               savedBooks: args.bookInfo,
             },
           },
-          { new: true },
+          { new: true }
         );
-        console.log('newBookUser:', newBookUser)
+        console.log("newBookUser:", newBookUser);
         return newBookUser;
       } else {
         console.log("saveBook Resolver: No authenticated user in context");
       }
     },
 
-    removeBook: async (parent, args, context, info) => {
+    removeBook: async (parent, { bookId }, context, info) => {
+      console.log("removeBook mutation resolver activated");
+      // console.log("removeBook this:", this);
+      // console.log("removeBook parent:", parent);
+      console.log("removeBook bookId:", bookId);
+      console.log("removeBook context.user._id:", context.user._id);
+      // console.log("removeBook info:", info);
+
       if (context.user) {
         const removeBookUser = User.findByIdAndUpdate(
           { _id: context.user._id },
-          { new: true },
           {
             $pull: {
-              savedBooks: args.bookId,
+              savedBooks: { bookId },
             },
-          }
+          },
+          { new: true }
         );
 
         return removeBookUser;
