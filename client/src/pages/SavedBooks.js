@@ -20,7 +20,7 @@ const SavedBooks = () => {
 
   // Set up Apollo mutations and queries
   const {loading, data} = useQuery(ME_QUERY)
-  console.log('raw me query value returned to SavedBooks.js:', data)
+  // console.log('raw me query value returned to SavedBooks.js:', data)
 
   // Create a contingency object in case the data pull fails or you have no books
   const myData = data?.me || {savedBooks: []}
@@ -87,8 +87,8 @@ const SavedBooks = () => {
     return <h2>LOADING...</h2>;
   }
 
-  console.log(`SavedBooks about to use:`)
-  console.log(`data:`, data)
+  // console.log(`SavedBooks about to use:`)
+  // console.log(`data:`, data)
 
   return (
     <>

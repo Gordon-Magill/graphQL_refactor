@@ -74,7 +74,7 @@ const SearchBooks = () => {
 
   // create function to handle saving a book to our database
   const handleSaveBook = async (bookId) => {
-    console.log('handleSaveBook called with bookId: ',bookId)
+    // console.log('handleSaveBook called with bookId: ',bookId)
     // find the book in `searchedBooks` state by the matching id
     const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
 
@@ -90,11 +90,11 @@ const SearchBooks = () => {
       // const response = await saveBook(bookToSave, token);
 
       // New mutation
-      console.log('calling saveBook_mutation with ...bookToSave: ',bookToSave)
+      // console.log('calling saveBook_mutation with ...bookToSave: ',bookToSave)
       const { data } = await saveBook_mutation({variables: {
         bookInfo: {...bookToSave}
        }});
-       console.log('data:', data)
+      //  console.log('data:', data)
       
       //  Nonfunctional now that we're not using the REST API
       // if (!response.ok) {
@@ -102,7 +102,7 @@ const SearchBooks = () => {
       // }
 
       // if book successfully saves to user's account, save book id to state
-      console.log('setSavedBookIds about to be called with savedBookIds: ',savedBookIds)
+      // console.log('setSavedBookIds about to be called with savedBookIds: ',savedBookIds)
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
     } catch (err) {
       console.error(err);

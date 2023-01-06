@@ -44,12 +44,12 @@ const LoginForm = () => {
       // const { token, user } = await response.json();
 
       // NEW mutation content
-      console.log('userFormData:', userFormData)
+      // console.log('userFormData:', userFormData)
       const { data } = await login({variables:{
         ...userFormData
       }})
 
-      console.log('login data.login.user.savedBooks:', data.login.user.savedBooks);
+      // console.log('login data.login.user.savedBooks:', data.login.user.savedBooks);
       Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
