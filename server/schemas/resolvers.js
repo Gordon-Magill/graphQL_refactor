@@ -25,7 +25,7 @@ const resolvers = {
       console.log("login server mutation resolver triggered");
       console.log(args);
       // Find any users that have the same email submitted in the login attempt
-      const user = await User.findOne({ email: args.email });
+      const user = await User.findOne({ email: args.email }).populate();
       console.log(`user:`, user);
       if (!user) {
         console.log("Login mutation resolver error: incorrect user email");

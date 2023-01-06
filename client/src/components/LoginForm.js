@@ -49,7 +49,7 @@ const LoginForm = () => {
         ...userFormData
       }})
 
-      console.log(data);
+      console.log('login data.login.user.savedBooks:', data.login.user.savedBooks);
       Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
